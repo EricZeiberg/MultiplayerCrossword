@@ -18,7 +18,7 @@ public class Entry {
 
     @Override
     public String toString() {
-        return clue;
+        return id + ". " + clue;
     }
 
     public int getId() {

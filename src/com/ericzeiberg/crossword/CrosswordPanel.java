@@ -176,12 +176,12 @@ public class CrosswordPanel extends JPanel {
             g.drawString(cell.getC(), (int) (xCoord + width / 2 - fm
                             .getStringBounds(cell.getC(), g).getWidth() / 2),
                     (int) (yCoord + fm.getHeight() / 2.2 + width / 2));
-//            if (true) { // the little numbers
-//                Font temp = g.getFont(); // to reset font afterwards
-//                g.setFont(new Font("Arial Narrow", Font.PLAIN, 9));
-//                g.drawString(cell(), xCoord + 1, yCoord + 7);
-//                g.setFont(temp);
-//            }
+            if (cell.isFirstLetter()) { // the little numbers
+                Font temp = g.getFont(); // to reset font afterwards
+                g.setFont(new Font("Arial Narrow", Font.PLAIN, 9));
+                g.drawString(Integer.toString(cell.getClueNumber()), xCoord + 1, yCoord + 7);
+                g.setFont(temp);
+            }
         }
     }
 

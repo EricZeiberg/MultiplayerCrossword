@@ -26,18 +26,29 @@ public class CrosswordMain {
             if (cells[e.getX()][e.getY()] == null){
                 for (int i = 0; i < e.getLength(); i++) {
                     char answerChar = e.getAnswer().toCharArray()[i];
-                    cells[e.getX() + i][e.getY()] = new Cell(e.getX() + i, e.getY(), null, e, Character.toString(answerChar));
+                    if (i == 0){
+                        cells[e.getX() + i][e.getY()] = new Cell(e.getX() + i, e.getY(), null, e, Character.toString(answerChar), true);
+                    }
+                    else {
+                        cells[e.getX() + i][e.getY()] = new Cell(e.getX() + i, e.getY(), null, e, Character.toString(answerChar), false);
+                    }
                 }
             }
         }
         // Down processing
         for (Entry e : down.getEntries()){
-            if (cells[e.getX()][e.getY()] == null){
-                for (int i = 0; i < e.getLength(); i++) {
-                    char answerChar = e.getAnswer().toCharArray()[i];
-                    //cells[e.getX()][e.getY()  + i] = new Cell(e.getX(), e.getY() + i, null, e, Character.toString(answerChar));
+            for (int i = 0; i < e.getLength(); i++) {
+                char answerChar = e.getAnswer().toCharArray()[i];
+                boolean isFirstLetter = i == 0;
+                if (cells[e.getX()][e.getY() + i] != null) {
+                    cells[e.getX()][e.getY() + i].setDown(e);
+                    cells[e.getX()][e.getY() + i].setFirstLetter(isFirstLetter);
+                }
+                else {
+                        cells[e.getX()][e.getY()  + i] = new Cell(e.getX(), e.getY() + i, e, null, Character.toString(answerChar), isFirstLetter);
                 }
             }
+
         }
 
         initGUI(across, down, new Crossword(cells));
