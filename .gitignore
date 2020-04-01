@@ -1,0 +1,21 @@
+# Maven generated files
+target
+dependency-reduced-pom.xml
+
+# Mac OSX generated files
+.DS_Store
+
+# Eclipse generated files
+.classpath
+.project
+.settings
+
+# IntelliJ IDEA
+.idea
+*.iml
+out
+
+# Vim generated files
+*~
+*.swp
+
